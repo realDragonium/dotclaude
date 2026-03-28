@@ -1,0 +1,8 @@
+{
+  "name": "dotclaude",
+  "description": "Opinionated Claude Code plugin that shapes how Claude thinks about your product, writes your code, and reviews the result.",
+  "version": "0.1.0",
+  "author": {
+    "name": "realDragonium"
+  }
+}

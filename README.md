@@ -5,8 +5,9 @@ Opinionated Claude Code plugin that shapes how Claude thinks about your product,
 ## Install
 
 ```bash
-# From GitHub
-claude plugin install github:realDragonium/dotclaude
+# Add the repo as a marketplace source, then install
+/plugin marketplace add realDragonium/dotclaude
+/plugin install dotclaude@realDragonium-dotclaude
 
 # Local development
 claude --plugin-dir ./path-to-dotclaude
