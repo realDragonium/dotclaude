@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (in case of scripts)
+node_modules/
+npm-debug.log*
+
+# Python (in case of scripts)
+__pycache__/
+*.pyc
+.venv/
+
+# Archives (build artifacts, not source)
+*.zip
