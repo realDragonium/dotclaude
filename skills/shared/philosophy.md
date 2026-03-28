@@ -28,15 +28,23 @@ external constraint, or a design choice? If the latter, it does not belong here.
 
 ## Functional Patterns
 
-Prefer pure functions over methods with side effects. Prefer immutable data
-transformations over mutating state. Prefer declarative over imperative when
-it doesn't sacrifice readability.
+Pure functions for core logic. Side effects (I/O, database, external APIs) belong
+at boundaries, not scattered throughout.
 
-This doesn't mean "everything must be FP" — it means the default should be
-functional, and imperative/stateful code should exist at well-defined boundaries
-(I/O, database, external APIs) rather than scattered throughout business logic.
+Functions do one thing. If the name needs "and" in it, it's two functions.
 
-Functions should do one thing. If the name needs "and" in it, it's two functions.
+Immutability is a tool — use `readonly`, frozen dataclasses, and the like when they
+add clarity. Direct field assignment is fine. Immutability is not a default rule.
+
+## Data Is Transparent
+
+Fields are public. No private-field-plus-getter/setter that contains no logic.
+
+Computed properties are fine — they earn their existence with real logic.
+Validation and normalization happen at object creation, not in setters.
+Objects should be valid by construction.
+
+Use readonly/frozen when useful, not by default.
 
 ## Naming: Say What It Is, Nothing More
 
@@ -85,9 +93,9 @@ deployment complexity, cognitive load. The benefit must exceed the cost.
 A framework handles I/O — HTTP routing, database access, template rendering,
 message queuing. It is the outermost layer of your application, not its foundation.
 
-Business logic must not depend on the framework. No framework imports in core
+Core logic must not depend on the framework. No framework imports in core
 code. Endpoints and ORM models are entry points — they translate external input
-into plain data and call core logic. They do not contain business rules.
+into plain data and call core logic. They do not contain application rules.
 
 **The test:** can you call your core logic with plain data and assert on the
 result — without starting a server, loading a container, or connecting to a
@@ -98,7 +106,7 @@ database? If not, the framework has leaked into your core.
 - Core layer: plain functions and plain objects, no framework imports, fully testable in isolation
 - Persistence layer: behind an interface the core defines — not one the ORM dictates
 
-Switching frameworks or ORMs should not require rewriting business logic.
+Switching frameworks or ORMs should not require rewriting core logic.
 If it would, the boundary is wrong.
 
 ## When Complexity Is Warranted
