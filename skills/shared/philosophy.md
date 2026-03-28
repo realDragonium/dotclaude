@@ -81,6 +81,27 @@ concern, not a formatting concern. Flag the readability problem.
 Every architectural boundary has a cost: serialization, error handling,
 deployment complexity, cognitive load. The benefit must exceed the cost.
 
+## Domain at the Center
+
+A framework handles I/O — HTTP routing, database access, template rendering,
+message queuing. It is the outermost layer of your application, not its foundation.
+
+Business logic must not depend on the framework. No framework imports in domain
+code. Endpoints and ORM models are entry points — they translate external input
+into plain data and call domain logic. They do not contain business rules.
+
+**The test:** can you call your core logic with plain data and assert on the
+result — without starting a server, loading a container, or connecting to a
+database? If not, the framework has leaked into your domain.
+
+**The structure:**
+- Framework layer: receives external input, translates to plain data, calls domain logic, translates result back
+- Domain layer: plain functions and plain objects, no framework imports, fully testable in isolation
+- Persistence layer: behind an interface the domain defines — not one the ORM dictates
+
+Switching frameworks or ORMs should not require rewriting business logic.
+If it would, the boundary is wrong.
+
 ## When Complexity Is Warranted
 
 Complexity earns its place when:
