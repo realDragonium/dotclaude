@@ -3,6 +3,11 @@
 These principles govern all review, architecture, and product decisions.
 They are not rigid rules — they are a compass. Apply judgment.
 
+After reading this, detect the primary language of the codebase and read the relevant extension:
+- Go → `${CLAUDE_PLUGIN_ROOT}/skills/shared/philosophy-go.md`
+- Python → `${CLAUDE_PLUGIN_ROOT}/skills/shared/philosophy-python.md`
+- TypeScript/JavaScript → `${CLAUDE_PLUGIN_ROOT}/skills/shared/philosophy-typescript.md`
+
 ## Core Principle: Simplicity as Default, Complexity as Earned
 
 Simplicity is the default state. Complexity must justify its existence with
@@ -13,14 +18,13 @@ When reviewing, always ask: **can this be simpler without losing capability?**
 
 ## Composition Over Inheritance
 
-Inheritance is almost never the right choice. Flag it every time you see it.
-The only acceptable exceptions:
+In our own code: never. The only permitted uses are external constraints:
 - Language-mandated patterns (e.g., extending Error/Exception classes)
-- Framework requirements that genuinely cannot be avoided (and even then, question the framework choice)
+- Framework requirements that cannot be avoided (and even then, question the framework choice)
 
 Prefer: interfaces, composition, higher-order functions, dependency injection.
-When someone reaches for `extends`, the question is always: "what interface
-or composition pattern would solve this without coupling?"
+Flag every `extends`/inherits in a review. The question is always: is this an
+external constraint, or a design choice? If the latter, it does not belong here.
 
 ## Functional Patterns
 
@@ -40,13 +44,12 @@ Names should be precise and honest. They should describe what something IS
 or DOES, not what category it belongs to.
 
 **Kill useless suffixes:**
-- `UserService` → `Users` (or a more specific name for what it actually does)
 - `OrderManager` → what does it manage? Name that thing
 - `DataHelper` → helper for what? Name the actual operation
-- `RequestHandler` → `parseRequest`, `routeRequest`, etc.
 - `BaseController` → why does this exist? (see: inheritance)
 - `AbstractFactory` → almost certainly over-engineered
-- `Utils` / `Helpers` / `Common` → these are junk drawers. Break them up.
+- `*Utils` / `*Helpers` / `*Common` as class or file names → junk drawers; name what
+  the thing actually does. As folder names they're fine if there's a clear theme.
 
 **The test:** if you remove the suffix and the name still makes sense and is
 more precise, the suffix was noise.
@@ -70,7 +73,6 @@ concern, not a formatting concern. Flag the readability problem.
 
 ## Architecture: Fewest Moving Parts That Solve the Problem
 
-- Don't add a service/layer/abstraction until you have a concrete reason
 - Don't split into microservices until a monolith is actually painful
 - Don't add a message queue until synchronous is actually failing
 - Don't add caching until you've measured the bottleneck

@@ -5,7 +5,7 @@ context: fork
 agent: product-critic
 ---
 
-Read the shared philosophy first: `${CLAUDE_PLUGIN_ROOT}/skills/shared/philosophy.md`
+Read the shared philosophy: `${CLAUDE_PLUGIN_ROOT}/skills/shared/philosophy.md`
 
 You are interrogating a product decision. Your job is NOT to help build — it is
 to determine whether this feature is worth building AT ALL, and if so, whether

@@ -5,7 +5,7 @@ context: fork
 agent: arch-challenger
 ---
 
-Read the shared philosophy first: `${CLAUDE_PLUGIN_ROOT}/skills/shared/philosophy.md`
+Read the shared philosophy: `${CLAUDE_PLUGIN_ROOT}/skills/shared/philosophy.md`
 
 You are reviewing an architecture decision for unnecessary complexity,
 poor abstractions, naming problems, inheritance misuse, and missed
