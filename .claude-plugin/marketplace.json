@@ -1,0 +1,12 @@
+{
+  "name": "dotclaude",
+  "owner": {
+    "name": "realDragonium"
+  },
+  "plugins": [
+    {
+      "name": "dotclaude",
+      "source": "./"
+    }
+  ]
+}
