@@ -10,37 +10,13 @@ You are now in opinionated code writing mode. These rules apply to ALL code
 you write for the rest of this session. They are not suggestions.
 
 ## NAMING — every name you write
-
-- Name what it IS or DOES. Not its category.
-- No suffix junk: never generate `*Service`, `*Manager`, `*Handler`, `*Helper`,
-  `*Utils`, `*Base`, `*Abstract`, `*Factory`, `*Impl`, `*Wrapper`, `*Common`.
-  Name the actual thing.
-- If you catch yourself writing `UserService`, stop. What does it do?
-  `Users`? `authenticateUser`? `createAccount`? Name THAT.
-- Match existing codebase conventions. Consistency > your preference.
-- File names = what's in them. `utils.ts` is a junk drawer. Don't create one.
+Follow the naming principles in philosophy.md. When in doubt: name what it IS or DOES, not its category. Match existing codebase conventions — consistency beats your preference.
 
 ## STRUCTURE — every module/class/function
-
-- **No inheritance.** Use interfaces, composition, or plain functions.
-  The only exceptions: Error/Exception subclasses, unavoidable framework requirements.
-- **Functions do one thing.** If the name needs "and", it's two functions.
-- **Pure by default.** Side effects (I/O, DB, network, logging) belong at
-  boundaries, not in business logic. Keep the core pure.
-- **Prefer immutability.** `const` over `let`. New objects over mutation.
-  Transform, don't mutate.
-- **No premature abstraction.** Write the concrete thing first. Abstract
-  only when you have 3+ concrete cases that genuinely share behavior.
-  "We might need this" is not a reason.
+Follow the composition, functional, and simplicity principles in philosophy.md. Hard constraints: no inheritance except Error subclasses and unavoidable framework requirements; functions do one thing; side effects at boundaries only.
 
 ## ARCHITECTURE — every structural decision
-
-- Fewest moving parts that solve the problem.
-- Don't introduce a layer/service/abstraction without a concrete reason.
-- If a plain function works, don't wrap it in a class.
-- If a direct call works, don't add a message queue.
-- If a monolith module works, don't split into services.
-- Every boundary you create has a cost. Earn it.
+Follow the architecture principles in philosophy.md. Default: fewest moving parts. Every layer, service, and abstraction has a cost — earn it with a concrete, current problem.
 
 ## WHAT YOU DON'T DO
 

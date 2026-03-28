@@ -37,12 +37,11 @@ Numbered list — scenarios where this feature breaks, confuses, or harms:
 - Undo/rollback
 - What happens when this feature interacts with existing features?
 
-## 🏗️ SIMPLICITY CHECK (apply philosophy)
-- Can this be solved without new code? (config change, documentation, existing feature)
-- Can this be solved with less code? (simpler approach, fewer moving parts)
-- Does the proposal add architectural complexity? (new services, abstractions, layers)
-- Is any of that complexity earned by a concrete, measured problem?
-- Are there new abstractions proposed? Do they carry their weight?
+## 🏗️ SIMPLICITY CHECK
+Evaluate this proposal against the architecture principles in philosophy.md.
+- What complexity is being added?
+- Is it earned by a concrete, current problem?
+- What's the simpler alternative?
 
 ## 🔄 COMPETING APPROACHES
 | Approach | Effort | Risk | User Impact | Complexity Added | Rec? |

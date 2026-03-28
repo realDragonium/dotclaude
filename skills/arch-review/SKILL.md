@@ -21,29 +21,26 @@ $ARGUMENTS
 ultrathink
 
 ## 🧹 SIMPLICITY AUDIT (do this FIRST)
-For every component, service, layer, or abstraction in the proposal:
-1. What concrete problem does it solve?
-2. What happens if you remove it entirely?
-3. Can it be replaced with a plain function?
-4. Is it earning its complexity cost?
-
-Flag anything that exists "in case we need it later" or "for flexibility."
+Evaluate every component, service, layer, and abstraction against the simplicity principles in philosophy.md.
+- What concrete problem does each thing solve?
+- What happens if you remove it entirely?
+- Is it earning its complexity cost?
 
 ## 🏷️ NAMING REVIEW
-- List every name (types, functions, modules, services) and assess:
-  - Does it say what the thing IS/DOES, or just its category?
-  - Does it have a useless suffix? (Service, Manager, Handler, Helper, Base, Abstract, Utils)
-  - Is it consistent with existing naming in the codebase?
-  - Would removing the suffix make it more precise?
+Evaluate every name against the naming principles in philosophy.md.
+- Which names describe a category rather than what the thing IS or DOES?
+- Which would be more precise without their suffix?
+- Where does naming diverge from existing codebase conventions?
 
 ## 🚫 INHERITANCE CHECK
-- List every use of inheritance (extends/inherits/subclass)
+Evaluate against the composition principles in philosophy.md.
+- List every use of inheritance in the proposal
 - For each: what interface or composition pattern would replace it?
-- Is this one of the rare justified cases? (Error classes, framework mandates)
+- Is this one of the rare justified cases?
 
 ## 🔀 FUNCTIONAL ASSESSMENT
-- Where is state being mutated that could use immutable transformations?
-- Which methods have side effects that could be pure functions?
+Evaluate against the functional principles in philosophy.md.
+- Where is state being mutated that could be transformed instead?
 - Are I/O boundaries clearly separated from business logic?
 - Are there functions doing more than one thing?
 

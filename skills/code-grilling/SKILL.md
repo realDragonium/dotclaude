@@ -25,11 +25,10 @@ $ARGUMENTS
 5. The fix is concrete (show corrected code)
 
 ## PHILOSOPHY CHECKS (apply to every file reviewed):
-- **Naming:** Flag useless suffixes (Service, Manager, Handler, Helper, Utils, Base, Abstract). Suggest the precise name.
-- **Inheritance:** Flag every `extends`/inherits. Propose composition/interface alternative.
-- **Functional:** Flag unnecessary mutation, side effects in business logic, impure functions that could be pure.
-- **Simplicity:** Flag abstractions that don't earn their complexity. "Can this be a plain function?"
-- **Consistency:** Flag naming or patterns that break from codebase conventions.
+Review each file against the principles in philosophy.md.
+- Which naming, inheritance, functional, or simplicity violations does this introduce?
+- Are any abstractions not earning their complexity?
+- Does anything break from existing codebase conventions?
 
 ## NEVER FLAG:
 - Formatting (indentation, brackets, commas, import order)
