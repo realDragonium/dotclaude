@@ -11,8 +11,8 @@ does. They should read like documentation and survive refactoring.
 ## What to test
 $ARGUMENTS
 
-## If a behavior-map exists for this feature, read it first.
-The behavior map's "Given/When/Then" list is your test list.
+## If a feature-discovery spec exists for this feature, read it first.
+The spec's acceptance criteria and decisions are your test list.
 
 ## CORE PRINCIPLE: Test behavior, not implementation
 
