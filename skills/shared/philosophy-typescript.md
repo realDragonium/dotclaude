@@ -37,4 +37,4 @@ No barrel files (`index.ts` that re-exports everything) unless at a published pa
 boundary. Barrel files cause circular dependency risks and slow bundlers. Import
 directly from the source file.
 
-No `utils.ts`, `helpers.ts`, or `common.ts` — name the actual domain.
+No `utils.ts`, `helpers.ts`, or `common.ts` — name the actual concern.

@@ -21,7 +21,7 @@ Name what the thing does.
 
 ## Classes
 
-Classes are appropriate for domain objects and anything with meaningful state.
+Classes are appropriate for objects with meaningful state or behavior.
 The core philosophy still applies: prefer composition over inheritance, keep
 inheritance for language-mandated patterns (Exception subclasses, ABC where
 genuinely needed), and question deep hierarchies.

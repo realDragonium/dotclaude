@@ -48,8 +48,7 @@ or DOES, not what category it belongs to.
 - `DataHelper` → helper for what? Name the actual operation
 - `BaseController` → why does this exist? (see: inheritance)
 - `AbstractFactory` → almost certainly over-engineered
-- `*Utils` / `*Helpers` / `*Common` as class or file names → junk drawers; name what
-  the thing actually does. As folder names they're fine if there's a clear theme.
+- `*Utils` / `*Helpers` / `*Common` → junk drawers anywhere — class, file, or folder. Name what the thing actually does.
 
 **The test:** if you remove the suffix and the name still makes sense and is
 more precise, the suffix was noise.
@@ -81,23 +80,23 @@ concern, not a formatting concern. Flag the readability problem.
 Every architectural boundary has a cost: serialization, error handling,
 deployment complexity, cognitive load. The benefit must exceed the cost.
 
-## Domain at the Center
+## Core at the Center
 
 A framework handles I/O — HTTP routing, database access, template rendering,
 message queuing. It is the outermost layer of your application, not its foundation.
 
-Business logic must not depend on the framework. No framework imports in domain
+Business logic must not depend on the framework. No framework imports in core
 code. Endpoints and ORM models are entry points — they translate external input
-into plain data and call domain logic. They do not contain business rules.
+into plain data and call core logic. They do not contain business rules.
 
 **The test:** can you call your core logic with plain data and assert on the
 result — without starting a server, loading a container, or connecting to a
-database? If not, the framework has leaked into your domain.
+database? If not, the framework has leaked into your core.
 
 **The structure:**
-- Framework layer: receives external input, translates to plain data, calls domain logic, translates result back
-- Domain layer: plain functions and plain objects, no framework imports, fully testable in isolation
-- Persistence layer: behind an interface the domain defines — not one the ORM dictates
+- Framework layer: receives external input, translates to plain data, calls core logic, translates result back
+- Core layer: plain functions and plain objects, no framework imports, fully testable in isolation
+- Persistence layer: behind an interface the core defines — not one the ORM dictates
 
 Switching frameworks or ORMs should not require rewriting business logic.
 If it would, the boundary is wrong.
