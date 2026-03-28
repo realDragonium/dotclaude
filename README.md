@@ -18,7 +18,7 @@ claude --plugin-dir ./path-to-dotclaude
 These skills form a pipeline. Use them in order, or pick what you need:
 
 ```
-product-reasoning  →  feature-discovery  →  code-mode + test-writing  →  code-grilling + arch-review
+product-reasoning  →  feature-discovery  →  code-mode + test-writing  →  review
 "should we build?"    "what, how, where?"    "build it right"             "did we build it right?"
 ```
 
@@ -52,18 +52,12 @@ Writes behavior-focused tests. Tests describe what the code does, not how. Pairs
 /dotclaude:test-writing Write tests for src/auth/
 ```
 
-### `/dotclaude:arch-review`
-Challenges architecture decisions. Reviews simplicity, naming, inheritance use, functional patterns, structural boundaries, failure modes, and always asks "why not simpler?"
+### `/dotclaude:review`
+Code and architecture review in one pass. Finds real bugs, security issues, and philosophy violations at the code level; challenges simplicity, structure, naming, and design decisions at the architecture level. Language-specific checklists for Go, Python, and TypeScript. Never flags formatting.
 
 ```
-/dotclaude:arch-review Review the current architecture of src/
-```
-
-### `/dotclaude:code-grilling`
-Ruthless code review with language-specific checklists. Finds real bugs and philosophy violations. Never flags formatting.
-
-```
-/dotclaude:code-grilling Review the last commit
+/dotclaude:review Review the last commit
+/dotclaude:review Review the architecture of src/
 ```
 
 ## Philosophy
@@ -106,10 +100,8 @@ dotclaude/
 │   │   └── SKILL.md                   ← Persistent coding philosophy mode
 │   ├── test-writing/
 │   │   └── SKILL.md                   ← Behavior-focused test generation
-│   ├── arch-review/
-│   │   └── SKILL.md                   ← Challenge architecture decisions
-│   └── code-grilling/
-│       ├── SKILL.md                   ← Ruthless code review
+│   └── review/
+│       ├── SKILL.md                   ← Code + architecture review
 │       └── references/
 │           ├── typescript-checklist.md
 │           ├── python-checklist.md
@@ -117,14 +109,13 @@ dotclaude/
 ├── agents/
 │   ├── feature-scout.md               ← Read-only codebase explorer
 │   ├── product-critic.md
-│   ├── arch-challenger.md
-│   └── code-griller.md
+│   └── reviewer.md
 └── README.md
 ```
 
 ## Extending
 
-**Add a language checklist:** create `skills/code-grilling/references/<lang>-checklist.md`, add detection in the SKILL.md.
+**Add a language checklist:** create `skills/review/references/<lang>-checklist.md`, add detection in `skills/review/SKILL.md`.
 
 **Add a language philosophy:** create `skills/shared/philosophy-<lang>.md` following the existing pattern. Add it to the detection list in `philosophy.md`.
 
