@@ -136,7 +136,3 @@ dotclaude/
 - **`context: fork`**: may be ignored in some Claude Code versions. Invoke agents by name as a fallback.
 - **Triggering**: use `/dotclaude:<skill>` explicitly for guaranteed invocation.
 - **No nesting**: subagents can't spawn sub-subagents.
-
-## License
-
-MIT
